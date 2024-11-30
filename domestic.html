@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="homestyle.css">
+  <title>Domestic Flights</title>
+  <style>
+/* General Section Styles */
+
+body {
+  font-family: 'Avenir', sans-serif;
+  color: #333;
+}
+
+video#background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* Send the video to the background */
+}
+
+.domestic-flights-section {
+  max-width: 70%;
+  margin: 150px auto;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  border-radius: 15px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.domestic-flights-section:hover {
+  transform: translateY(-10px);
+}
+
+/* Title Styles */
+.domestic-flights-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #0078d7;
+  text-align: center;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+
+/* Flight Search Form */
+.flight-search-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+input {
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: #0078d7;
+  outline: none;
+}
+
+.search-button {
+  grid-column: span 2;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(120deg, #0078d7, #005bb5);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+}
+
+.search-button:hover {
+  background: linear-gradient(120deg, #005bb5, #004088);
+  transform: scale(1.05);
+}
+
+/* Flight Results */
+.flight-results-section {
+  margin-top: 30px;
+}
+
+.flight-results-title {
+  font-size: 26px;
+  margin-bottom: 15px;
+  color: #444;
+  text-align: center;
+}
+
+.flight-results-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.flight-result-item {
+  flex: 1 1 calc(50% - 20px);
+  background: #f4faff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.flight-result-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.flight-result-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.flight-result-description {
+  margin: 5px 0 10px;
+  color: #555;
+}
+
+.flight-result-price {
+  font-size: 18px;
+  color: #0078d7;
+  font-weight: bold;
+}
+
+.flight-result-cta {
+  padding: 10px 15px;
+  color: white;
+  background: #0078d7;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.flight-result-cta:hover {
+  background-color: #005bb5;
+}
+/* Destination Guide Section */
+.destination-guide {
+  margin-top: 40px;
+  padding: 30px;
+  background: linear-gradient(120deg, #0078d7, #00bfff);
+  color: white;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.destination-guide h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.destination-guide p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 500;
+  text-shadow: 1px 1px 1.5px rgba(0, 0, 0, 0.2);
+}
+
+/* Travel Tips Section */
+.travel-tips {
+  margin-top: 40px;
+  padding: 30px;
+  background: #fef7e0;
+  border-radius: 12px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.travel-tips h2 {
+  font-size: 28px;
+  color: #ff9800;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 1.2px;
+}
+
+.travel-tips ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.travel-tips ul li {
+  margin: 10px 0;
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #333;
+  border: 1px solid #ff9800;
+  border-radius: 8px;
+  background: rgba(255, 152, 0, 0.1);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.travel-tips ul li:hover {
+  background: rgba(255, 152, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(255, 152, 0, 0.3);
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="logo.jpg" alt="Airline Logo">
+  </div>
+  <nav>
+    <a href="homepage.html">Home</a>
+    <div class="dropdown">
+      <a href="#flights">Flights</a>
+      <div class="dropdown-content">
+        <a href="domestic.html">Domestic</a>
+        <a href="international.html">International</a>
+        <a href="deals.html">Deals</a>
+      </div>
+    </div>
+    <a href="service.html">Services</a>
+    <a href="contactus.html">Contact</a>
+  </nav>
+  <div class="search-bar">
+    <input type="text" placeholder="Search flights, bookings...">
+    <button><i class="fas fa-search"></i></button>
+  </div>
+  <a href="booknow.html" class="cta-btn">Book Now</a>
+  <button class="theme-toggle" id="theme-toggle">🌙</button>
+<div class="language-dropdown">
+    <button class="lang-btn">🌐 Language</button>
+    <div class="language-content">
+      <a href="#english">English</a>
+      <a href="#spanish">Español</a>
+      <a href="#french">Français</a>
+      <a href="#german">Deutsch</a>
+    </div>
+  </div>
+  <div class="user-profile">
+    <i class="fas fa-user-circle"></i>
+    <div class="profile-dropdown">
+      <a href="#profile">My Profile</a>
+      <a href="#settings">Settings</a>
+      <a href="#logout">Logout</a>
+    </div>
+  </div>
+</header>
+
+
+ <video id="background-video" autoplay loop muted>
+    <source src="domestic.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <section class="domestic-flights-section">
+    <h1 class="domestic-flights-title">Find Your Domestic Flights</h1>
+
+    <!-- Flight Search Form -->
+    <form class="flight-search-form">
+      <div class="form-group">
+        <label for="departure-city">Departure City:</label>
+        <input type="text" id="departure-city" placeholder="Enter Departure City">
+      </div>
+      <div class="form-group">
+        <label for="arrival-city">Arrival City:</label>
+        <input type="text" id="arrival-city" placeholder="Enter Arrival City">
+      </div>
+      <div class="form-group">
+        <label for="travel-dates">Travel Dates:</label>
+        <input type="date" id="travel-dates">
+      </div>
+      <div class="form-group">
+        <label for="passengers">Passengers:</label>
+        <input type="number" id="passengers" min="1" value="1">
+      </div>
+     <button type="button" class="search-button" onclick="searchFlights()">Search Flights</button>
+    </form>
+
+     <!-- Flight Results Section -->
+    <div class="flight-results-section" id="flight-results-section">
+      <h2 class="flight-results-title">Available Flights</h2>
+      <ul class="flight-results-list" id="flight-results-list">
+        <!-- Dynamic content will be added here -->
+      </ul>
+    </div>
+  
+    <!-- Destination Guide -->
+    <section class="destination-guide">
+      <h2>Destination Guide</h2>
+      <p>Explore top destinations like Los Angeles, New York, and Chicago with curated travel tips and guides.</p>
+    </section>
+
+    <!-- Travel Tips Section -->
+    <section class="travel-tips">
+      <h2>Travel Tips</h2>
+      <ul>
+        <li>Check your baggage allowance before traveling.</li>
+        <li>Arrive at the airport 2 hours before departure.</li>
+        <li>Keep your ID and tickets handy at all times.</li>
+      </ul>
+    </section>
+  </section>
+
+<footer class="footer">
+  <div class="container">
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="#about-us">About Us</a></li>
+        <li><a href="#careers">Careers</a></li>
+        <li><a href="#privacy-policy">Privacy Policy</a></li>
+        <li><a href="#faqs">FAQs</a></li>
+      </ul>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h4>Follow Us</h4>
+      <div class="social-media-icons">
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Contact Details -->
+    <div class="footer-section">
+      <h4>Contact Us</h4>
+      <p><i class="fas fa-phone-alt"></i> +1-800-123-4567</p>
+      <p><i class="fas fa-envelope"></i> info@example.com</p>
+      <p><i class="fas fa-map-marker-alt"></i> 123 Airline Ave, Travel City, 45678</p>
+    </div>
+  </div>
+</footer>
+
+
+
+<script>
+
+function searchFlights() {
+  const departure = document.getElementById('departure-city').value;
+  const arrival = document.getElementById('arrival-city').value;
+  const date = document.getElementById('travel-dates').value;
+  const passengers = document.getElementById('passengers').value;
+
+  if (!departure || !arrival || !date || !passengers) {
+    alert('Please fill out all fields.');
+    return;
+  }
+
+  const resultsSection = document.getElementById('flight-results-section');
+  const resultsList = document.getElementById('flight-results-list');
+
+  resultsList.innerHTML = ''; // Clear previous results
+
+  // Simulating dynamic results
+  const flights = [
+    { id: 1, title: 'Flight 123', description: `${departure} to ${arrival}`, price: '$500' },
+    { id: 2, title: 'Flight 456', description: `${departure} to ${arrival}`, price: '$450' },
+  ];
+
+  flights.forEach(flight => {
+    const listItem = document.createElement('li');
+    listItem.classList.add('flight-result-item');
+    listItem.innerHTML = `
+      <h3 class="flight-result-title">${flight.title}</h3>
+      <p class="flight-result-description">${flight.description}</p>
+      <p class="flight-result-price">${flight.price}</p>
+      <button class="flight-result-cta">Book Now</button>
+    `;
+    resultsList.appendChild(listItem);
+  });
+
+  resultsSection.style.display = 'block'; // Show results section
+}
+
+</script>
+  <script src="sections.js"></script>
+
+</body>
+</html>

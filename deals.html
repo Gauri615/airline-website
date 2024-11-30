@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="homestyle.css">
+  <title>Deals Flights</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Avenir', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f8ff;
+      color: #333;
+     /* overflow:hidden;*/
+    }
+
+     .video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      object-fit: cover; /* Ensure the video covers the entire screen */
+    }
+ 
+    /* Deals Flights Section */
+    .deals-flights-section {
+      width: 70%;
+      margin: 150px auto;
+      padding: 30px;
+      background: rgba(249, 249, 249, 0.9); /* Semi-transparent background */
+      border-radius: 12px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .deals-flights-title {
+      font-size: 2.5rem;
+      color: #0078d7;
+      margin-bottom: 10px;
+    }
+
+    .deals-flights-subtitle {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .deals-filter {
+      margin-bottom: 20px;
+    }
+
+    .deals-filter input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 300px;
+    }
+
+    .deals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .deal-item {
+      background:rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .deal-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .deal-title {
+      font-size: 1.5rem;
+      color: #444;
+      margin-bottom: 10px;
+    }
+
+    .deal-description {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .deal-price {
+      font-size: 1.2rem;
+      color: #0078d7;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .deal-cta {
+      background: #0078d7;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .deal-cta:hover {
+      background: #005bb5;
+    }
+
+    .no-results {
+      display: none;
+      font-size: 1.2rem;
+      color: #ff0000;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="logo.jpg" alt="Airline Logo">
+  </div>
+  <nav>
+    <a href="homepage.html">Home</a>
+    <div class="dropdown">
+      <a href="#flights">Flights</a>
+      <div class="dropdown-content">
+        <a href="domestic.html">Domestic</a>
+        <a href="international.html">International</a>
+        <a href="deals.html">Deals</a>
+      </div>
+    </div>
+    <a href="service.html">Services</a>
+    <a href="contactus.html">Contact</a>
+  </nav>
+  <div class="search-bar">
+    <input type="text" placeholder="Search flights, bookings...">
+    <button><i class="fas fa-search"></i></button>
+  </div>
+  <a href="booknow.html" class="cta-btn">Book Now</a>
+  <button class="theme-toggle" id="theme-toggle">🌙</button>
+<div class="language-dropdown">
+    <button class="lang-btn">🌐 Language</button>
+    <div class="language-content">
+      <a href="#english">English</a>
+      <a href="#spanish">Español</a>
+      <a href="#french">Français</a>
+      <a href="#german">Deutsch</a>
+    </div>
+  </div>
+  <div class="user-profile">
+    <i class="fas fa-user-circle"></i>
+    <div class="profile-dropdown">
+      <a href="#profile">My Profile</a>
+      <a href="#settings">Settings</a>
+      <a href="#logout">Logout</a>
+    </div>
+  </div>
+</header>
+
+
+ <!-- Video Background -->
+  <video class="video-background" autoplay loop muted>
+    <source src="deals.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+<section class="deals-flights-section">
+  <h1 class="deals-flights-title">Exclusive Flight Deals</h1>
+  <p class="deals-flights-subtitle">Limited-time offers for top destinations</p>
+  
+  <!-- Filter Options -->
+  <div class="deals-filter">
+    <label for="destination-filter">Filter by Destination:</label>
+    <input type="text" id="destination-filter" placeholder="Enter destination">
+  </div>
+
+  <!-- Deals Grid -->
+  <div class="deals-grid"></div>
+
+  <!-- No Results Message -->
+  <p class="no-results">No deals found for the entered destination.</p>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="#about-us">About Us</a></li>
+        <li><a href="#careers">Careers</a></li>
+        <li><a href="#privacy-policy">Privacy Policy</a></li>
+        <li><a href="#faqs">FAQs</a></li>
+      </ul>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h4>Follow Us</h4>
+      <div class="social-media-icons">
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Contact Details -->
+    <div class="footer-section">
+      <h4>Contact Us</h4>
+      <p><i class="fas fa-phone-alt"></i> +1-800-123-4567</p>
+      <p><i class="fas fa-envelope"></i> info@example.com</p>
+      <p><i class="fas fa-map-marker-alt"></i> 123 Airline Ave, Travel City, 45678</p>
+    </div>
+  </div>
+</footer>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const deals = [
+    { title: "New York to Los Angeles", description: "Departing: Jan 1 | Returning: Jan 8", price: "$500", expiry: Date.now() + 3600000 },
+    { title: "Chicago to Miami", description: "Departing: Feb 1 | Returning: Feb 8", price: "$400", expiry: Date.now() + 7200000 },
+    { title: "San Francisco to Tokyo", description: "Departing: Mar 10 | Returning: Mar 20", price: "$800", expiry: Date.now() + 10800000 },
+  ];
+
+  const grid = document.querySelector(".deals-grid");
+  const filterInput = document.getElementById("destination-filter");
+  const noResults = document.querySelector(".no-results");
+
+  // Render Deals
+  const renderDeals = (filteredDeals) => {
+    grid.innerHTML = "";
+    noResults.style.display = filteredDeals.length === 0 ? "block" : "none";
+
+    filteredDeals.forEach((deal) => {
+      const dealItem = document.createElement("div");
+      dealItem.className = "deal-item";
+      dealItem.innerHTML = `
+        <h2 class="deal-title">${deal.title}</h2>
+        <p class="deal-description">${deal.description}</p>
+        <p class="deal-price">${deal.price}</p>
+        <button class="deal-cta">Book Now</button>
+        <p class="countdown"></p>
+      `;
+
+      const countdownElement = dealItem.querySelector(".countdown");
+      const updateCountdown = () => {
+        const now = Date.now();
+        const timeLeft = deal.expiry - now;
+        if (timeLeft <= 0) {
+          countdownElement.textContent = "Deal expired";
+          clearInterval(timerInterval);
+          return;
+        }
+        const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
+        const seconds = Math.floor((timeLeft / 1000) % 60);
+        countdownElement.textContent = `Expires in: ${hours}h ${minutes}m ${seconds}s`;
+      };
+
+      const timerInterval = setInterval(updateCountdown, 1000);
+      updateCountdown();
+
+      grid.appendChild(dealItem);
+    });
+  };
+
+  renderDeals(deals);
+
+  // Filter Logic
+  filterInput.addEventListener("input", () => {
+    const query = filterInput.value.toLowerCase();
+    const filteredDeals = deals.filter((deal) =>
+      deal.title.toLowerCase().includes(query)
+    );
+    renderDeals(filteredDeals);
+  });
+});
+</script>
+  <script src="sections.js"></script>
+
+</body>
+</html>
