@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="homestyle.css">
+
+  <style>
+    /* Basic Styles */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: url('contact us.jpg');
+      margin: 0;
+      padding: 0;
+    }
+
+
+    /* Contact Us Section Styles */
+    .contact-us-section {
+      width: 60%;
+      margin: 150px auto;
+      padding: 40px;
+      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      position: relative;
+      animation: slideIn 1s ease-out;
+    }
+
+    .contact-us-title {
+      font-size: 32px;
+      font-weight: bold;
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .contact-us-description {
+      font-size: 16px;
+      color: #666;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    /* Contact Us Form Styles */
+    .contact-us-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .contact-us-form input, 
+    .contact-us-form textarea {
+      width: 80%;
+      max-width: 500px;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .contact-us-form input:focus, 
+    .contact-us-form textarea:focus {
+      border-color: #3498db;
+    }
+
+    .contact-us-form textarea {
+      height: 120px;
+      resize: none;
+    }
+
+    .contact-us-form button {
+      padding: 15px 30px;
+      background-color: #3498db;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-us-form button:hover {
+      background-color: #2980b9;
+    }
+
+    /* Contact Us Map Styles */
+    .contact-us-map {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .contact-us-map iframe {
+      width: 80%;
+      max-width: 600px;
+      height: 300px;
+      border: 0;
+      border-radius: 10px;
+    }
+
+    /* Animation */
+    @keyframes slideIn {
+      0% {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo">
+    <img src="logo.jpg" alt="Airline Logo">
+  </div>
+  <nav>
+    <a href="homepage.html">Home</a>
+    <div class="dropdown">
+      <a href="#flights">Flights</a>
+      <div class="dropdown-content">
+        <a href="domestic.html">Domestic</a>
+        <a href="international.html">International</a>
+        <a href="deals.html">Deals</a>
+      </div>
+    </div>
+    <a href="service.html">Services</a>
+    <a href="contactus.html">Contact</a>
+  </nav>
+  <div class="search-bar">
+    <input type="text" placeholder="Search flights, bookings...">
+    <button><i class="fas fa-search"></i></button>
+  </div>
+  <a href="booknow.html" class="cta-btn">Book Now</a>
+  <button class="theme-toggle" id="theme-toggle">🌙</button>
+<div class="language-dropdown">
+    <button class="lang-btn">🌐 Language</button>
+    <div class="language-content">
+      <a href="#english">English</a>
+      <a href="#spanish">Español</a>
+      <a href="#french">Français</a>
+      <a href="#german">Deutsch</a>
+    </div>
+  </div>
+  <div class="user-profile">
+    <i class="fas fa-user-circle"></i>
+    <div class="profile-dropdown">
+      <a href="#profile">My Profile</a>
+      <a href="#settings">Settings</a>
+      <a href="#logout">Logout</a>
+    </div>
+  </div>
+</header>
+
+
+  <!-- Contact Us Section -->
+  <section class="contact-us-section">
+    <h1 class="contact-us-title">Get in Touch</h1>
+    <p class="contact-us-description">We'd love to hear from you! Feel free to ask us anything, provide feedback, or share your thoughts.</p>
+    
+    <!-- Contact Form -->
+    <form class="contact-us-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email Address" required>
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+
+    <!-- Embedded Map -->
+    <div class="contact-us-map">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8354345099984!2d-122.41941518468185!3d37.77492927975873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858064ef77f5fb%3A0x6a4c9978ed084620!2sSan%20Francisco%2C%20CA%2C%20USA!5e0!3m2!1sen!2sin!4v1697836718854!5m2!1sen!2sin" 
+        allowfullscreen=""
+        aria-hidden="false" 
+        tabindex="0"></iframe>
+    </div>
+  </section>
+
+
+<footer class="footer">
+  <div class="container">
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="#about-us">About Us</a></li>
+        <li><a href="#careers">Careers</a></li>
+        <li><a href="#privacy-policy">Privacy Policy</a></li>
+        <li><a href="#faqs">FAQs</a></li>
+      </ul>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h4>Follow Us</h4>
+      <div class="social-media-icons">
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Contact Details -->
+    <div class="footer-section">
+      <h4>Contact Us</h4>
+      <p><i class="fas fa-phone-alt"></i> +1-800-123-4567</p>
+      <p><i class="fas fa-envelope"></i> info@example.com</p>
+      <p><i class="fas fa-map-marker-alt"></i> 123 Airline Ave, Travel City, 45678</p>
+    </div>
+  </div>
+</footer>
+
+ <script src="sections.js"></script>
+</body>
+</html>

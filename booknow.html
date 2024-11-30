@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="homestyle.css">
+  <title>Book Now</title>
+  <style>
+
+	body {
+      font-family: 'Roboto', sans-serif;
+      background: url('tre.jpg');
+      margin: 0;
+      padding: 0;
+    }
+
+
+	/* Container */
+.book-now-section {
+  width: 70%;
+  margin: 150px auto;
+  padding: 30px;
+  background:  rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow:  0 10px 30px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  transition: transform 0.3s ease-in-out;
+}
+
+
+.book-now-section:hover {
+  transform: scale(1.02); /* Slight zoom on hover */
+}
+
+
+/* Title and Subtitle */
+.book-now-title {
+  font-size: 32px;
+  color: #222;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+   text-transform: uppercase;
+  letter-spacing: 2px; /* Modern spacing */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.book-now-subtitle {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+/* Recommendations */
+.recommendations {
+  margin-bottom: 20px;
+}
+
+.recommendations h2 {
+  font-size: 22px;
+  color: #444;
+  border-bottom: 2px solid #ff6b6b; /* Underline effect */
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.recommendations ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.recommendations li {
+  background: #fefefe;
+  margin: 8px 0;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+
+.recommendations li:hover {
+  background-color: #ffe6e6; /* Subtle highlight */
+}
+
+
+/* Booking Form */
+.booking-form {
+  margin-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+
+.booking-form h2 {
+  font-size: 22px;
+  color: #444;
+  margin-bottom: 15px;
+  flex-basis: 100%;
+}
+
+
+.booking-form input {
+  flex: 1 1 calc(50% - 15px);
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+   font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.booking-form h3 {
+  font-size: 22px;
+  color: #444;
+  border-bottom: 2px solid #ff6b6b; /* Underline effect */
+  display: inline-block;
+  margin-bottom: 5px; /* Slightly reduce margin */
+  text-align: center;
+  width: 100%; /* Ensures labels are aligned consistently */
+}
+
+
+.booking-form input[type="date"] {
+  margin-bottom: 10px; /* Reduce vertical gap */
+}
+
+.booking-form input:focus {
+  border-color: #ff6b6b;
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 107, 107, 0.5);
+}
+
+
+.cta-button {
+  flex: 1 1 100%;
+  background:linear-gradient(to right, #ff6b6b, #ff8e8e);
+  color: #fff;
+  font-size: 18px;
+  margin-top:15px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+   font-weight: bold;
+  text-transform: uppercase;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.cta-button:hover {
+  background: linear-gradient(to right, #ff4c4c, #ff6b6b);
+  transform: translateY(-2px); 
+}
+
+/* Payment Gateway */
+.payment-gateway-integration {
+  margin-bottom: 20px;
+}
+
+.payment-form input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+   font-size: 16px;
+}
+
+.pay-now-button {
+  width: 100%;
+  background:linear-gradient(to right, #4caf50, #6fcf77);
+  color: white;
+  font-size: 18px;
+  padding: 12px ;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.pay-now-button:hover {
+  background: linear-gradient(to right, #43a047, #4caf50);
+  transform: translateY(-2px);
+}
+
+/* Social Proof */
+.social-proof {
+  margin: 20px 0;
+  background: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.social-proof h2 {
+  font-size: 22px;
+}
+
+.social-proof p {
+  font-size: 16px;
+  margin: 8px 0;
+   display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Limited-Time Offer */
+.limited-offer {
+  background: linear-gradient(to right, #ffe0b2, #ffcc80);
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  animation: pulse 3s infinite;
+}
+
+.limited-offer h2 {
+  color: #ff6b6b;
+  margin-bottom: 10px;
+}
+
+.limited-offer p {
+  font-size: 20px;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 107, 107, 0.7);
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="logo.jpg" alt="Airline Logo">
+  </div>
+  <nav>
+    <a href="homepage.html">Home</a>
+    <div class="dropdown">
+      <a href="#flights">Flights</a>
+      <div class="dropdown-content">
+        <a href="domestic.html">Domestic</a>
+        <a href="international.html">International</a>
+        <a href="deals.html">Deals</a>
+      </div>
+    </div>
+    <a href="service.html">Services</a>
+    <a href="contactus.html">Contact</a>
+  </nav>
+  <div class="search-bar">
+    <input type="text" placeholder="Search flights, bookings...">
+    <button><i class="fas fa-search"></i></button>
+  </div>
+  <a href="booknow.html" class="cta-btn">Book Now</a>
+  <button class="theme-toggle" id="theme-toggle">🌙</button>
+<div class="language-dropdown">
+    <button class="lang-btn">🌐 Language</button>
+    <div class="language-content">
+      <a href="#english">English</a>
+      <a href="#spanish">Español</a>
+      <a href="#french">Français</a>
+      <a href="#german">Deutsch</a>
+    </div>
+  </div>
+  <div class="user-profile">
+    <i class="fas fa-user-circle"></i>
+    <div class="profile-dropdown">
+      <a href="#profile">My Profile</a>
+      <a href="#settings">Settings</a>
+      <a href="#logout">Logout</a>
+    </div>
+  </div>
+</header>
+
+
+<section class="book-now-section">
+  <h1 class="book-now-title">Book Your Flight Now</h1>
+  <p class="book-now-subtitle">Get the best deals and make your travel seamless</p>
+
+  <!-- Countdown Timer -->
+  <div class="limited-offer">
+    <h2>Limited-Time Offer</h2>
+    <p>Book now and get up to <strong>25% OFF</strong> on selected destinations!</p>
+    <p id="countdownTimer" style="font-size: 24px; font-weight: bold; color: #ff6b6b;"></p>
+  </div>
+
+  <!-- Personalized Recommendations -->
+  <div class="recommendations">
+    <h2><br>Personalized Recommendations</h2>
+    <ul>
+      <li>Flight to New York: $300 - 20% Off</li>
+      <li>Weekend in Paris: $450 - Limited Seats</li>
+      <li>Tokyo Adventure: $600 - Early Bird Special</li>
+    </ul>
+  </div>
+
+  <!-- Booking Form -->
+  <form id="bookingForm" class="booking-form">
+    <h2>Booking Details</h2>
+    <input type="text" placeholder="Passenger Name" required>
+    <input type="email" placeholder="Email Address" required>
+   <h3>Departure Date</h3>
+    <input type="date" placeholder="Departure Date" required>
+    <h3>Return Date</h3>
+    <input type="date" placeholder="Return Date">
+    <button type="submit" class="cta-button">Book Now</button>
+  </form>
+
+  <!-- Payment Gateway -->
+  <div class="payment-gateway-integration">
+    <h2>Payment Details</h2>
+    <form id="paymentForm" class="payment-form">
+      <input type="text" placeholder="Card Number" required>
+      <input type="text" placeholder="Expiration Date (MM/YY)" required>
+      <input type="text" placeholder="CVV" required>
+      <button type="submit" class="pay-now-button">Pay Now</button>
+    </form>
+  </div>
+
+  <!-- Social Proof -->
+  <div class="social-proof">
+    <h2>Why Book With Us?</h2>
+    <p>⭐ 4.8/5 from over 10,000 happy travelers</p>
+    <p>🛫 Trusted by leading airlines worldwide</p>
+    <p>⚡ Fast and secure bookings</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="#about-us">About Us</a></li>
+        <li><a href="#careers">Careers</a></li>
+        <li><a href="#privacy-policy">Privacy Policy</a></li>
+        <li><a href="#faqs">FAQs</a></li>
+      </ul>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h4>Follow Us</h4>
+      <div class="social-media-icons">
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Contact Details -->
+    <div class="footer-section">
+      <h4>Contact Us</h4>
+      <p><i class="fas fa-phone-alt"></i> +1-800-123-4567</p>
+      <p><i class="fas fa-envelope"></i> info@example.com</p>
+      <p><i class="fas fa-map-marker-alt"></i> 123 Airline Ave, Travel City, 45678</p>
+    </div>
+  </div>
+</footer>
+
+ <script>
+    // Countdown Timer Logic
+    const countdownElement = document.getElementById('countdownTimer');
+    const offerEndTime = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24 hours from now
+
+    function updateCountdown() {
+      const now = new Date();
+      const timeRemaining = offerEndTime - now;
+
+      if (timeRemaining <= 0) {
+        countdownElement.textContent = 'Offer Expired!';
+        return;
+      }
+
+      const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
+      const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+      countdownElement.textContent = `${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    setInterval(updateCountdown, 1000);
+
+    // Form Validation
+    const bookingForm = document.getElementById('bookingForm');
+    const paymentForm = document.getElementById('paymentForm');
+
+    bookingForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Booking form submitted successfully!');
+    });
+
+    paymentForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Payment processed successfully!');
+    });
+  </script>
+
+ <script src="sections.js"></script>
+
+</body>
+</html>
