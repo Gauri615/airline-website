@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="homestyle.css">
+
+  <style>
+    /* General Styles */
+    body {
+       font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('service.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+    }
+
+    .services-section {
+      width: 75%;
+      max-width: 1200px;
+      margin: 150px auto;
+      padding: 50px;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      border-radius: 15px;
+    }
+
+    .services-title {
+      text-align: center;
+      font-size: 40px;
+      font-weight: bold;
+      margin-bottom: 40px;
+      margin-top:15px;
+      color: #444;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      position: relative;
+    }
+
+    .services-title::after {
+      content: "";
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #3498db, #e74c3c);
+      display: block;
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    .services-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .service-item {
+      flex: 1 1 calc(33.333% - 30px);
+      background: linear-gradient(135deg, #f7f7f7, #eaeaea);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+    }
+
+    .service-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .service-image {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .service-content {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .service-title {
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #444;
+    }
+
+    .service-description {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .service-cta {
+      display: inline-block;
+      padding: 12px 25px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      background: linear-gradient(90deg, #3498db, #e74c3c);
+      border: none;
+      border-radius: 25px;
+      text-align: center;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-cta:hover {
+      background: linear-gradient(90deg, #e74c3c, #3498db);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Modal Styles */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      width: 80%;
+      max-width: 600px;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      position: relative;
+      text-align: center;
+    }
+
+    .modal-content h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #444;
+    }
+
+    .modal-content p {
+      font-size: 18px;
+      color: #666;
+      line-height: 1.8;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 18px;
+      color: #fff;
+      background: #e74c3c;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .close-modal:hover {
+      background: #c0392b;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="logo.jpg" alt="Airline Logo">
+  </div>
+  <nav>
+    <a href="homepage.html">Home</a>
+    <div class="dropdown">
+      <a href="#flights">Flights</a>
+      <div class="dropdown-content">
+        <a href="domestic.html">Domestic</a>
+        <a href="international.html">International</a>
+        <a href="deals.html">Deals</a>
+      </div>
+    </div>
+    <a href="service.html">Services</a>
+    <a href="contactus.html">Contact</a>
+  </nav>
+  <div class="search-bar">
+    <input type="text" placeholder="Search flights, bookings...">
+    <button><i class="fas fa-search"></i></button>
+  </div>
+  <a href="booknow.html" class="cta-btn">Book Now</a>
+  <button class="theme-toggle" id="theme-toggle">🌙</button>
+<div class="language-dropdown">
+    <button class="lang-btn">🌐 Language</button>
+    <div class="language-content">
+      <a href="#english">English</a>
+      <a href="#spanish">Español</a>
+      <a href="#french">Français</a>
+      <a href="#german">Deutsch</a>
+    </div>
+  </div>
+  <div class="user-profile">
+    <i class="fas fa-user-circle"></i>
+    <div class="profile-dropdown">
+      <a href="#profile">My Profile</a>
+      <a href="#settings">Settings</a>
+      <a href="#logout">Logout</a>
+    </div>
+  </div>
+</header>
+
+
+  <section class="services-section">
+    <h1 class="services-title">Our Services</h1>
+    <ul class="services-list">
+      <!-- Service 1 -->
+      <li class="service-item">
+        <img src="bag.jpg" alt="Baggage Services" class="service-image">
+        <div class="service-content">
+          <h2 class="service-title">Baggage Services</h2>
+          <p class="service-description">We offer a range of baggage services to make your travel experience more convenient.</p>
+          <button class="service-cta" onclick="openModal('Baggage Services', 'We handle all your baggage needs with care and efficiency. From lost baggage tracking to priority handling, we ensure a seamless experience.')">Learn More</button>
+        </div>
+      </li>
+
+      <!-- Service 2 -->
+      <li class="service-item">
+        <img src="checkin.jpg" alt="Check-in Services" class="service-image">
+        <div class="service-content">
+          <h2 class="service-title">Check-in Services</h2>
+          <p class="service-description">Enjoy our streamlined check-in services designed for a hassle-free start to your journey.</p>
+          <button class="service-cta" onclick="openModal('Check-in Services', 'Save time with our fast and easy check-in options. Online check-ins, kiosks, and dedicated counters are available for your convenience.')">Learn More</button>
+        </div>
+      </li>
+
+      <!-- Service 3 -->
+      <li class="service-item">
+        <img src="inflight.jpg" alt="In-flight Entertainment" class="service-image">
+        <div class="service-content">
+          <h2 class="service-title">In-flight Entertainment</h2>
+          <p class="service-description">Relax and enjoy a selection of movies, music, and games on your journey.</p>
+          <button class="service-cta" onclick="openModal('In-flight Entertainment', 'Discover a world of entertainment with our curated selection of movies, music, and games to make your flight enjoyable.')">Learn More</button>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+
+
+
+
+<footer class="footer">
+  <div class="container">
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="#about-us">About Us</a></li>
+        <li><a href="#careers">Careers</a></li>
+        <li><a href="#privacy-policy">Privacy Policy</a></li>
+        <li><a href="#faqs">FAQs</a></li>
+      </ul>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h4>Follow Us</h4>
+      <div class="social-media-icons">
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Contact Details -->
+    <div class="footer-section">
+      <h4>Contact Us</h4>
+      <p><i class="fas fa-phone-alt"></i> +1-800-123-4567</p>
+      <p><i class="fas fa-envelope"></i> info@example.com</p>
+      <p><i class="fas fa-map-marker-alt"></i> 123 Airline Ave, Travel City, 45678</p>
+    </div>
+  </div>
+</footer>
+
+
+
+<!-- Modal -->
+  <div class="modal" id="serviceModal">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal()">×</button>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDescription"></p>
+    </div>
+  </div>
+
+    <script>
+    // Open Modal Function
+    function openModal(title, description) {
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalDescription').textContent = description;
+      document.getElementById('serviceModal').style.display = 'flex';
+    }
+
+    // Close Modal Function
+    function closeModal() {
+      document.getElementById('serviceModal').style.display = 'none';
+    }
+  </script>
+  <script src="sections.js"></script>
+
+</body>
+</html>
