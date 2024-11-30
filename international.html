@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="homestyle.css">
+  <title>International Flights</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Avenir', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f8ff;
+      color: #333;
+    }
+
+     .background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1; /* Place it behind all other elements */
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* Add a dark overlay for better contrast */
+      z-index: 0; /* Below content but above the video */
+    }
+
+
+    .international-flights-section {
+      width: 70%;
+      margin: 150px auto;
+      padding: 30px;
+      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+      border-radius: 12px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+       animation: fadeIn 1s ease-in-out;
+       position:relative;
+
+    }
+
+    .international-flights-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #0078d7;
+      text-align: center;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+      padding-bottom: 10px;
+      position:relative;
+    }
+
+
+   .international-flights-title::after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 4px;
+      background: #00bfff;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Flight Search Form */
+    .flight-search-form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+
+    .flight-search-form input,
+    .flight-search-form select,
+    .flight-search-form button {
+      padding: 12px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      transition:  border-color 0.3s, transform 0.3s;
+    }
+
+    .flight-search-form input:focus,
+    .flight-search-form select:focus {
+      border-color: #0078d7;
+      outline: none;
+      transform: scale(1.02);
+    }
+
+    .flight-search-form button {
+      background: linear-gradient(120deg, #0078d7, #005bb5);
+      color: white;
+      margin-left:230px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      grid-column: span 3;
+      transition: background-color 0.3s,  transform 0.3s;
+    }
+
+    .flight-search-form button:hover {
+      background: linear-gradient(120deg, #005bb5, #004088);
+      transform: translateY(-2px);
+    }
+
+    /* Flight Results Section */
+    .flight-results-section {
+      margin-top: 30px;
+    }
+
+    .flight-results-title {
+      font-size: 26px;
+      margin-bottom: 15px;
+      color: #444;
+      text-align: center;
+    }
+
+    .flight-results-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      list-style: none;
+      padding: 0;
+    }
+
+    .flight-result-item {
+      flex: 1 1 calc(50% - 20px);
+      background: #f4faff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .flight-result-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .flight-result-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .flight-result-description {
+      margin: 5px 0 10px;
+      color: #555;
+    }
+
+    .flight-result-price {
+      font-size: 18px;
+      color: #0078d7;
+      font-weight: bold;
+    }
+
+    .flight-result-cta {
+      padding: 10px 15px;
+      color: white;
+      background: #0078d7;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    .flight-result-cta:hover {
+      background-color: #005bb5;
+      transform: translateY(-3px);
+    }
+
+      @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .flight-result-item {
+        flex: 1 1 100%;
+      }
+      .flight-search-form button {
+        grid-column: span 1;
+      }
+    }
+
+    /* Destination Guide Section */
+    .destination-guide {
+      margin-top: 40px;
+      padding: 30px;
+      background: linear-gradient(120deg, #0078d7, #00bfff);
+      color: white;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .destination-guide h2 {
+      font-size: 28px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .destination-guide p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin: 0;
+      font-weight: 500;
+      text-shadow: 1px 1px 1.5px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Travel Tips Section */
+    .travel-tips {
+      margin-top: 40px;
+      padding: 30px;
+      background: #fef7e0;
+      border-radius: 12px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .travel-tips h2 {
+      font-size: 28px;
+      color: #ff9800;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: 1.2px;
+    }
+
+    .travel-tips ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      text-align: left;
+    }
+
+    .travel-tips ul li {
+      margin: 10px 0;
+      padding: 10px 15px;
+      font-size: 16px;
+      color: #333;
+      border: 1px solid #ff9800;
+      border-radius: 8px;
+      background: rgba(255, 152, 0, 0.1);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+
+    .travel-tips ul li:hover {
+      background: rgba(255, 152, 0, 0.2);
+      box-shadow: 0 4px 10px rgba(255, 152, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="logo.jpg" alt="Airline Logo">
+  </div>
+  <nav>
+    <a href="homepage.html">Home</a>
+    <div class="dropdown">
+      <a href="#flights">Flights</a>
+      <div class="dropdown-content">
+        <a href="domestic.html">Domestic</a>
+        <a href="international.html">International</a>
+        <a href="deals.html">Deals</a>
+      </div>
+    </div>
+    <a href="service.html">Services</a>
+    <a href="contactus.html">Contact</a>
+  </nav>
+  <div class="search-bar">
+    <input type="text" placeholder="Search flights, bookings...">
+    <button><i class="fas fa-search"></i></button>
+  </div>
+  <a href="booknow.html" class="cta-btn">Book Now</a>
+  <button class="theme-toggle" id="theme-toggle">🌙</button>
+<div class="language-dropdown">
+    <button class="lang-btn">🌐 Language</button>
+    <div class="language-content">
+      <a href="#english">English</a>
+      <a href="#spanish">Español</a>
+      <a href="#french">Français</a>
+      <a href="#german">Deutsch</a>
+    </div>
+  </div>
+  <div class="user-profile">
+    <i class="fas fa-user-circle"></i>
+    <div class="profile-dropdown">
+      <a href="#profile">My Profile</a>
+      <a href="#settings">Settings</a>
+      <a href="#logout">Logout</a>
+    </div>
+  </div>
+</header>
+
+
+<!-- Background Video -->
+  <video class="background-video" autoplay loop muted>
+    <source src="international.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="overlay"></div>
+
+  <section class="international-flights-section">
+    <h1 class="international-flights-title">International Flights</h1>
+    <form class="flight-search-form">
+      <input type="text" placeholder="Departure City">
+      <input type="text" placeholder="Arrival City">
+      <input type="date" placeholder="Travel Dates">
+      <select>
+        <option>Select Class</option>
+        <option>Economy</option>
+        <option>Business</option>
+        <option>First Class</option>
+      </select>
+      <button type="submit">Search Flights</button>
+    </form>
+    <div class="flight-results-section">
+      <h2 class="flight-results-title">Flight Results</h2>
+      <ul class="flight-results-list">
+        <li class="flight-result-item">
+          <h3 class="flight-result-title">Flight 123</h3>
+          <p class="flight-result-description">New York (JFK) → London (LHR)</p>
+          <p class="flight-result-price">$1,000</p>
+          <button class="flight-result-cta">Book Now</button>
+        </li>
+      </ul>
+    </div>
+    <div class="destination-guide">
+      <h2>Destination Guide</h2>
+      <p>Discover international destinations with curated travel guides, attractions, and tips.</p>
+    </div>
+    <div class="travel-tips">
+      <h2>Travel Tips</h2>
+      <ul>
+        <li>Always check visa requirements.</li>
+        <li>Keep your passport and travel documents handy.</li>
+        <li>Arrive at the airport at least 3 hours before departure.</li>
+      </ul>
+    </div>
+  </section>
+
+<footer class="footer">
+  <div class="container">
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="#about-us">About Us</a></li>
+        <li><a href="#careers">Careers</a></li>
+        <li><a href="#privacy-policy">Privacy Policy</a></li>
+        <li><a href="#faqs">FAQs</a></li>
+      </ul>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h4>Follow Us</h4>
+      <div class="social-media-icons">
+        <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Contact Details -->
+    <div class="footer-section">
+      <h4>Contact Us</h4>
+      <p><i class="fas fa-phone-alt"></i> +1-800-123-4567</p>
+      <p><i class="fas fa-envelope"></i> info@example.com</p>
+      <p><i class="fas fa-map-marker-alt"></i> 123 Airline Ave, Travel City, 45678</p>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script>
+  // Wait for the DOM to load
+  document.addEventListener("DOMContentLoaded", () => {
+    // Form Validation
+    const flightSearchForm = document.querySelector(".flight-search-form");
+    flightSearchForm.addEventListener("submit", (e) => {
+      e.preventDefault(); // Prevent default form submission
+
+      const inputs = Array.from(flightSearchForm.querySelectorAll("input, select"));
+      let isValid = true;
+
+      inputs.forEach((input) => {
+        if (!input.value.trim()) {
+          input.style.borderColor = "red"; // Highlight invalid inputs
+          isValid = false;
+        } else {
+          input.style.borderColor = "#ddd"; // Reset valid inputs
+        }
+      });
+
+      if (isValid) {
+        alert("Search submitted successfully!");
+        // Add logic to fetch flight data dynamically
+      } else {
+        alert("Please fill in all fields.");
+      }
+    });
+
+    // Smooth Scrolling to Sections
+    document.querySelectorAll(".international-flights-title, .flight-results-title").forEach((title) => {
+      title.addEventListener("click", () => {
+        const section = title.closest("section");
+        section.scrollIntoView({ behavior: "smooth" });
+      });
+    });
+
+    // Dynamic Flight Results Filtering
+    const flightResultsList = document.querySelector(".flight-results-list");
+    const sampleFlights = [
+      { id: 1, title: "Flight 123", route: "New York (JFK) → London (LHR)", price: "$1,000" },
+      { id: 2, title: "Flight 456", route: "Paris (CDG) → Tokyo (NRT)", price: "$1,500" },
+      { id: 3, title: "Flight 789", route: "Sydney (SYD) → Los Angeles (LAX)", price: "$1,200" },
+    ];
+
+    const renderFlights = (flights) => {
+      flightResultsList.innerHTML = ""; // Clear existing results
+      flights.forEach((flight) => {
+        const flightItem = document.createElement("li");
+        flightItem.classList.add("flight-result-item");
+        flightItem.innerHTML = `
+          <h3 class="flight-result-title">${flight.title}</h3>
+          <p class="flight-result-description">${flight.route}</p>
+          <p class="flight-result-price">${flight.price}</p>
+          <button class="flight-result-cta" data-id="${flight.id}">Book Now</button>
+        `;
+        flightResultsList.appendChild(flightItem);
+      });
+    };
+
+    renderFlights(sampleFlights); // Initial rendering of flights
+
+    // Example filter logic (can be replaced with API calls)
+    const filterFlights = (criteria) => {
+      const filteredFlights = sampleFlights.filter((flight) =>
+        flight.route.toLowerCase().includes(criteria.toLowerCase())
+      );
+      renderFlights(filteredFlights);
+    };
+
+    flightSearchForm.querySelector("input[placeholder='Arrival City']").addEventListener("input", (e) => {
+      filterFlights(e.target.value);
+    });
+
+    // Destination Guide Animation
+    const destinationGuide = document.querySelector(".destination-guide");
+    destinationGuide.addEventListener("mouseenter", () => {
+      destinationGuide.style.transform = "scale(1.05)";
+      destinationGuide.style.transition = "transform 0.3s ease-in-out";
+    });
+    destinationGuide.addEventListener("mouseleave", () => {
+      destinationGuide.style.transform = "scale(1)";
+    });
+
+    // Travel Tips Highlight
+    const travelTipsItems = document.querySelectorAll(".travel-tips ul li");
+    travelTipsItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        item.style.background = "#ff9800";
+        item.style.color = "#fff";
+        setTimeout(() => {
+          item.style.background = "rgba(255, 152, 0, 0.1)";
+          item.style.color = "#333";
+        }, 1000);
+      });
+    });
+  });
+</script>
+  <script src="sections.js"></script>
+
+
+</body>
+</html>
